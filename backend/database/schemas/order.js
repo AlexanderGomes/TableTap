@@ -12,14 +12,14 @@ const orderSchema = new mongoose.Schema(
       required: true,
       ref: "restaurant",
     },
-    customerName: {
-      type: String,
+    tableId: {
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "table",
     },
-    tableNumber: Number,
     items: [
       {
-        name: {
+        productId: {
           type: String,
           required: true,
         },
@@ -41,11 +41,8 @@ const orderSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    specialNotes: String,
   },
   { timestamps: true }
 );
 
-const Order = mongoose.model("order", orderSchema);
-
-module.exports = Order;
+module.exports = mongoose.model("order", orderSchema);

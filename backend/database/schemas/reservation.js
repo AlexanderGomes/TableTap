@@ -12,19 +12,11 @@ const reservationSchema = new mongoose.Schema(
       required: true,
       ref: "restaurant",
     },
-    customerName: {
-      type: String,
-      required: true,
-    },
-    contactNumber: {
-      type: String,
-      required: true,
-    },
     partySize: {
       type: Number,
       required: true,
     },
-    table: {
+    tableId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "table",
       required: true,
@@ -34,6 +26,4 @@ const reservationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Reservation = mongoose.model("reservation", reservationSchema);
-
-module.exports = Reservation;
+module.exports = mongoose.model("reservation", reservationSchema);

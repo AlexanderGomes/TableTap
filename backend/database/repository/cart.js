@@ -1,6 +1,6 @@
 const Cart = require("../schemas/shoppingCart");
 
-const createCart = async (userId) => {
+const findCart = async (userId) => {
   try {
     let cart;
     const findCart = await Cart.findOne({ userId: userId });
@@ -21,5 +21,5 @@ const createCart = async (userId) => {
 };
 
 module.exports = {
-  createCart,
+  findCart,
 };

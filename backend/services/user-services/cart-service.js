@@ -1,10 +1,10 @@
-const { createCart } = require("../../database/repository/cart");
+const { findCart } = require("../../database/repository/cart");
 const Product = require("../../database/schemas/menu");
 
 const addToCart = async (cartInfo) => {
   const { productId, quantity, userId } = cartInfo;
   try {
-    const cart = await createCart(userId);
+    const cart = await findCart(userId);
     const product = await Product.findById(productId);
 
     const existingCartItem = cart.items.find(
@@ -35,7 +35,7 @@ const addToCart = async (cartInfo) => {
 
 const removefromCart = async (cartInfo) => {
   const { productId, userId, quantity } = cartInfo;
-  const cart = await createCart(userId);
+  const cart = await findCart(userId);
 
   try {
     const existingCartItem = cart.items.find(
